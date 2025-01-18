@@ -5,12 +5,9 @@ import (
 	"fmt"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/nexryai/summergo"
 	"net/url"
 )
-
-type Response struct {
-	URL string `json:"url"`
-}
 
 func handler(request events.LambdaFunctionURLRequest) (events.LambdaFunctionURLResponse, error) {
 	// クエリパラメータを取得
@@ -33,17 +30,20 @@ func handler(request events.LambdaFunctionURLRequest) (events.LambdaFunctionURLR
 		}, nil
 	}
 
-	// レスポンスデータを作成
-	responseData := Response{
-		URL: urlParam,
+	summary, err := summergo.Summarize(urlParam)
+	if err != nil {
+		return events.LambdaFunctionURLResponse{
+			StatusCode: 400,
+			Body:       "Failed to summarize",
+		}, nil
 	}
 
 	// JSONに変換
-	responseJSON, err := json.Marshal(responseData)
+	responseJSON, err := json.Marshal(summary)
 	if err != nil {
 		return events.LambdaFunctionURLResponse{
 			StatusCode: 500,
-			Body:       fmt.Sprintf(`{"error": "Failed to generate JSON: %s"}`, err),
+			Body:       "Internal Server Error",
 		}, nil
 	}
 
