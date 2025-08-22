@@ -7,7 +7,6 @@ on:
 permissions: {}
 
 jobs:
-  name: Deploy to AWS
   deploy:
     name: Update functions
     runs-on: ubuntu-latest
