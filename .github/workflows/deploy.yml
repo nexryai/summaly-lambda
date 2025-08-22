@@ -39,7 +39,7 @@ jobs:
     - name: Deploy Lambda Function
       uses: aws-actions/aws-lambda-deploy@v1
       with:
-        function-name: eleos
+        function-name: summaly
         code-artifacts-dir: deploy
         handler: main.handler
         runtime: provided.al2023 # Amazon Linux 2023
