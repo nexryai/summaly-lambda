@@ -1,6 +1,6 @@
 module github.com/nexryai/summaly-lambda
 
-go 1.23.3
+go 1.25.0
 
 require (
 	github.com/aws/aws-lambda-go v1.54.0
@@ -10,6 +10,6 @@ require (
 require (
 	github.com/nexryai/archer v0.1.0 // indirect
 	github.com/saintfish/chardet v0.0.0-20230101081208-5e3ef4b5456d // indirect
-	golang.org/x/net v0.38.0 // indirect
-	golang.org/x/text v0.23.0 // indirect
+	golang.org/x/net v0.55.0 // indirect
+	golang.org/x/text v0.37.0 // indirect
 )
