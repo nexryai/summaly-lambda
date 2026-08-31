@@ -1,9 +1,9 @@
 module github.com/nexryai/summaly-lambda
 
-go 1.25.0
+go 1.26
 
 require (
-	github.com/aws/aws-lambda-go v1.54.0
+	github.com/aws/aws-lambda-go v1.55.0
 	github.com/nexryai/summergo v0.1.10
 )
 
